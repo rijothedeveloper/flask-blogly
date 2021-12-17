@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.button {
+    background-color: #557D8B;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cancelButton {
+    border: 1px solid #557D8B;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
