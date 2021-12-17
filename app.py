@@ -63,5 +63,10 @@ def saveeditedUser(userId):
     user.image_url = imgUrl
     db.session.add(user)
     db.session.commit()
+    return redirect("/users")
 
+@app.route("/users/<int:userId>/delete")
+def deleteUser(userId):
+    User.query.filter_by(id=userId).delete()
+    db.session.commit()
     return redirect("/users")
