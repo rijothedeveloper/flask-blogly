@@ -57,7 +57,7 @@ def saveeditedUser(userId):
     firstName = request.form["first-name"]
     lastName = request.form["last-name"]
     imgUrl = request.form["img-url"]
-    user = user.query.get(userId)
+    user = User.query.get(userId)
     user.first_name = firstName
     user.last_name = lastName
     user.image_url = imgUrl
