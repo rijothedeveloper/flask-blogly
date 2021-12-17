@@ -25,3 +25,19 @@ class User(db.Model):
 
     image_url = db.Column(db.String,
                             default="")
+
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    def set_full_name(self, name):
+        names = name.split()
+        if len(names) > 1:
+            self.first_name = names[0]
+            self.last_name = names[1]
+
+    def del_full_name(self):
+        self.first_name = ""
+        self.last_name = ""
+
+    fullName = property(get_full_name, set_full_name, del_full_name, doc="full name of the person")
+         

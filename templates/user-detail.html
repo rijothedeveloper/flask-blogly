@@ -5,8 +5,8 @@
 {% block content %}
 
 <h1>{{user.fullName}}</h1>
-<a href="/edit-user" class="button-edit">Edit</a>
-<a href="/delete-user" class="button-delete">Delete</a>
+<a href="/users/{{user.id}}/edit" class="button-edit">Edit</a>
+<a href="/users/{{user.id}}/delete" class="button-delete">Delete</a>
 <img src="{{user.image_url}}" width="100px" height="100px" class="profile-img">
 
 {% endblock %}
