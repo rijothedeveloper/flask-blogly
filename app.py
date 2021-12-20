@@ -2,7 +2,8 @@
 
 from flask import Flask, redirect, render_template, request
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User
+from models import Post, db, connect_db, User
+import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "oh-so-secret"
@@ -45,7 +46,8 @@ def add_user():
 @app.route("/users/<int:userId>")
 def userDetails(userId):
     user = User.query.get(userId)
-    return render_template("user-detail.html", user=user)
+    posts = Post.query.filter(Post.id == userId).all()
+    return render_template("user-detail.html", user=user, posts=posts)
 
 @app.route("/users/<int:userId>/edit")
 def editUser(userId):
@@ -70,3 +72,16 @@ def deleteUser(userId):
     User.query.filter_by(id=userId).delete()
     db.session.commit()
     return redirect("/users")
+
+@app.route("/users/<int:userId>/posts/new")
+def showNewPostForm(userId):
+    return render_template("new-post-form.html", userId=userId)
+
+@app.route("/users/<int:userId>/posts/new", methods=["POST"])
+def addNewPost(userId):
+    title = request.form["title"]
+    content = request.form["content"]
+    post = Post(title=title, content=content, created_at=datetime.datetime.now(), user_id=userId)
+    db.session.add(post)
+    db.session.commit()
+    return redirect(f"/users/{userId}")

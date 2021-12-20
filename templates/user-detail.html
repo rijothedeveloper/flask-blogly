@@ -10,10 +10,10 @@
 <img src="{{user.image_url}}" width="100px" height="100px" class="profile-img img-thumbnail">
 <h2>Posts</h2>
 <ul>
-{% for post in posts%}
-    <li>{{post}}</li>
+{% for post in posts %}
+    <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
 {% endfor %}
 </ul>
-<a href="/users/{{user.id}}/posts/new" class="btn btn-primary">Edit</a>
+<a href="/users/{{user.id}}/posts/new" class="btn btn-primary">Add Post</a>
 
 {% endblock %}
