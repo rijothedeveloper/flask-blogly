@@ -16,3 +16,7 @@
     border-radius: 5px;
     text-decoration: none;
 }
+
+.profile-img {
+    float: left;
+}

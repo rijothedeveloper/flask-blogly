@@ -5,8 +5,15 @@
 {% block content %}
 
 <h1>{{user.fullName}}</h1>
-<a href="/users/{{user.id}}/edit" class="button-edit">Edit</a>
-<a href="/users/{{user.id}}/delete" class="button-delete">Delete</a>
-<img src="{{user.image_url}}" width="100px" height="100px" class="profile-img">
+<a href="/users/{{user.id}}/edit" class="btn btn-primary">Edit</a>
+<a href="/users/{{user.id}}/delete" class="btn btn-danger">Delete</a>
+<img src="{{user.image_url}}" width="100px" height="100px" class="profile-img img-thumbnail">
+<h2>Posts</h2>
+<ul>
+{% for post in posts%}
+    <li>{{post}}</li>
+{% endfor %}
+</ul>
+<a href="/users/{{user.id}}/posts/new" class="btn btn-primary">Edit</a>
 
 {% endblock %}
