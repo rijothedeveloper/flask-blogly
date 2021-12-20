@@ -40,4 +40,24 @@ class User(db.Model):
         self.last_name = ""
 
     fullName = property(get_full_name, set_full_name, del_full_name, doc="full name of the person")
+
+class Post(db.Model):
+    __tablename__ = "posts"
+
+    id = db.Column(db.Integer,
+                    primary_key=True,
+                    autoincrement=True)
+
+    title = db.Column(db.String,
+                        nullable=False)
+
+    content = db.Column(db.String,
+                        nullable=False)
+
+    created_at = db.Column(db.Date,
+                            nullable=False)
+
+    user_id = db.Column(db.Integer,
+                            db.ForeignKey('users.id'))
+
          
