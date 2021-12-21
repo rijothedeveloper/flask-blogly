@@ -85,3 +85,33 @@ def addNewPost(userId):
     db.session.add(post)
     db.session.commit()
     return redirect(f"/users/{userId}")
+
+@app.route("/posts/<int:postId>")
+def showPostDetail(postId):
+    post = Post.query.filter(Post.id == postId).one()
+    user = User.query.get(post.user_id)
+    return render_template("post-detail.html", post=post, user=user)
+
+@app.route("/posts/<int:postId>/edit")
+def showPostEditForm(postId):
+    return render_template("edit-post-form.html", postId=postId)
+
+@app.route("/posts/<int:postId>/edit", methods=["POST"])
+def saveEditedPost(postId):
+    title = request.form["title"]
+    content = request.form["content"]
+    post = Post.query.get(postId)
+    post.title = title
+    post.content = content
+    db.session.add(post)
+    db.session.commit()
+    return redirect(f"/posts/{postId}")
+
+@app.route("/posts/<int:postId>/delete")
+def deletePost(postId):
+    id = db.session.query(Post.user_id).filter(Post.id==postId).first()
+    userId = id[0]
+    Post.query.filter(Post.id==postId).delete()
+    db.session.commit()
+    url = f"/users/{userId}"
+    return redirect(f"/users/{userId}")

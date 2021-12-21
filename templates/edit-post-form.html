@@ -3,8 +3,8 @@
 {% block title %} edit post {% endblock %}
 
 {% block content %}
-    <h1>Create a User</h1>
-    <form action="/post/{{post.id}}/edit" method="post">
+    <h1>Edit the post</h1>
+    <form action="/posts/{{postId}}/edit" method="post">
         <div class="mb-3">
             <label for="title">Title</label> <br>
             <input type="text" id="ftitle" name="title"> <br>
@@ -12,10 +12,10 @@
 
         <div class="mb-3"></div>
             <label for="content">Content</label> <br>
-            <textarea class="form-control" aria-label="content"></textarea>
+            <textarea class="form-control" aria-label="content" id="content" name="content"></textarea>
         </div>
 
-        <a href="/users/{{user.id}}" class="btn btn-outline-info">Cancel</a>
+        <a href="/posts/{{postId}}" class="btn btn-outline-info">Cancel</a>
         <button type="submit" class="btn btn-success">Add</button>
 
     </form>
