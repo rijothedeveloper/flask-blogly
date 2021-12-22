@@ -5,15 +5,32 @@
 {% block content %}
     <h1>Create a User</h1>
     <form action="/users/{{userId}}/posts/new" method="post">
-        <div class="mb-3">
+        
+            <div class="mb-3">
             <label for="title">Title</label> 
-            <input type="text" id="ftitle" name="title"> 
-        </div>
-
-        <div class="mb-3"></div>
+            <input type="text" id="title" name="title"> <br>
+            </div>
+       
+            <div class="mb-3">
             <label for="content">Content</label>
             <textarea class="form-control" aria-label="content" id="content" name="content"></textarea>
-        </div>
+            </div>
+        
+        
+            
+            <input type="checkbox" id="fun" name="fun" value="fun">
+            <label for="fun"> Fun </label><br>
+
+            <input type="checkbox" id="even-more" name="even-more" value="even-more">
+            <label for="even-more"> Even More </label><br>
+
+            <input type="checkbox" id="bloop" name="bloop" value="bloop">
+            <label for="bloop"> Bloop </label><br>
+
+            <input type="checkbox" id="zope" name="zope" value="zope">
+            <label for="zope"> Zope </label><br>
+
+        
 
         <a href="/users/{{userId}}" class="btn btn-info">Cancel</a>
         <button type="submit" class="btn btn-success">Add</button>
