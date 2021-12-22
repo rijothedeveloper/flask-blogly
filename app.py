@@ -25,8 +25,6 @@ def home_page():
 @app.route("/users")
 def showUsers():
     users = User.query.all()
-    # import pdb
-    # pdb.set_trace()
     return render_template("user-listing.html", users=users)
 
 @app.route("/users/new", methods=["POST"])
