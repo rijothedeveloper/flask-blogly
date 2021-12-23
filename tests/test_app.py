@@ -53,3 +53,11 @@ class test_app(TestCase):
             html = res.get_data(as_text=True)
             shouldContain = '<button type="submit">Save</button>'
             self.assertIn(shouldContain, html)
+
+    def test_new_tag_form(self):
+        with app.test_client() as client:
+            res = client.get("/tags/new")
+            self.assertEqual(res.status_code, 200)
+            html = res.get_data(as_text=True)
+            shouldContain = '<h1>Create a Tag</h1>'
+            self.assertIn(shouldContain, html)
