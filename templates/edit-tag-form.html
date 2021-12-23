@@ -4,13 +4,13 @@
 
 {% block content %}
     <h1>Create a Tag</h1>
-    <form action="/tags/{{tag-id}}/edit">
+    <form action="/tags/{{tagId}}/edit">
         <div class="mb-3">
             <label for="name">Name</label> 
             <input type="text" id="name" name="name"> 
         </div>
 
-        <a href="/tags/{{tag-id}}" class="btn btn-info">Cancel</a>
+        <a href="/tags/{{tagId}}" class="btn btn-info">Cancel</a>
         <button type="submit" class="btn btn-success">Edit</button>
 
     </form>

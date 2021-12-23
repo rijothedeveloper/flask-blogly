@@ -3,7 +3,7 @@
 {% block title %} add new post {% endblock %}
 
 {% block content %}
-    <h1>Create a User</h1>
+    <h1>Create a post</h1>
     <form action="/users/{{userId}}/posts/new" method="post">
         
             <div class="mb-3">
@@ -17,18 +17,12 @@
             </div>
         
         
-            
-            <input type="checkbox" id="fun" name="fun" value="fun">
-            <label for="fun"> Fun </label><br>
+            {% for tag in tags %}
 
-            <input type="checkbox" id="even-more" name="even-more" value="even-more">
-            <label for="even-more"> Even More </label><br>
+                <input type="checkbox" id="{{tag.name}}" name="tags" value="{{tag.name}}">
+                <label for="{{tag.name}}"> {{tag.name}} </label><br>
 
-            <input type="checkbox" id="bloop" name="bloop" value="bloop">
-            <label for="bloop"> Bloop </label><br>
-
-            <input type="checkbox" id="zope" name="zope" value="zope">
-            <label for="zope"> Zope </label><br>
+            {% endfor %}
 
         
 

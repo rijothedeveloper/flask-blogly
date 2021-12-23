@@ -58,9 +58,10 @@ class Post(db.Model):
                             nullable=False)
 
     user_id = db.Column(db.Integer,
-                            db.ForeignKey('users.id'))
+                            db.ForeignKey('users.id', ondelete="CASCADE"))
+
     
-    posts_for_tag = db.relationship("PostTag", backref="posts")
+    
 
 class Tag(db.Model):
     __tablename__ = "tags"
@@ -72,16 +73,18 @@ class Tag(db.Model):
     name = db.Column(db.String,
                      nullable=False)
     
+    
+    
 class PostTag(db.Model):
     
-    __tablename__ = "postTags"
+    __tablename__ = "posttags"
     
     post_id = db.Column(db.Integer,
-                        db.ForeignKey("posts.id"),
+                        db.ForeignKey("posts.id", ondelete="CASCADE"),
                         primary_key=True)
     
     tag_id = db.Column(db.Integer,
-                       db.ForeignKey("tags.id"),
+                       db.ForeignKey("tags.id", ondelete="CASCADE"),
                        primary_key=True)
     
     
